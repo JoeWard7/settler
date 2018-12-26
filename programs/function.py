@@ -2,11 +2,6 @@
 
 import setup as set
 
-if __name__ == "__main__":
-    print("Hey, you called me directly. Nice.")
-else:
-    print("Hmm, you imported me. My name, therefore, is " + __name__)
-
 
 def player_statcalc(player):
     """Print this."""
@@ -58,7 +53,7 @@ def player_resOdds(player, resNum):
     for letter in player:
         if set.resource_position[letter] == resNum:
             resource_list.append(letter)
-    return player_odds(resource_list)
+    return str(player_odds(resource_list))
 
 
 def add_settle(player, settles):
@@ -66,3 +61,38 @@ def add_settle(player, settles):
     print(settles)
     for letter in settles:
         player.append(letter)
+
+
+def dice_roll(roll):
+    """Print me."""
+    for letter in set.letter_num:
+        if set.letter_num[letter] == roll:
+            for ownership in set.red_settle:
+                if ownership == letter:
+                    set.red_hand.append(set.resource_position[letter])
+            for ownership in set.blue_settle:
+                if ownership == letter:
+                    set.blue_hand.append(set.resource_position[letter])
+            for ownership in set.orange_settle:
+                if ownership == letter:
+                    set.orange_hand.append(set.resource_position[letter])
+            for ownership in set.white_settle:
+                if ownership == letter:
+                    set.white_hand.append(set.resource_position[letter])
+
+
+def card_remove(player, cards):
+    """Print me."""
+    print(cards)
+    for card in cards:
+        player.remove(card)
+
+
+def game_odds(resNum):
+    """Print me."""
+    resource_list = []
+    for letter in set.resource_position:
+        if set.resource_position[letter] == resNum:
+            resource_list.append(letter)
+    print(resource_list)
+    return str(player_odds(resource_list))
